@@ -1,0 +1,63 @@
+@startuml
+
+title __TD2's Class Diagram__\n
+package td2 {
+
+
+    interface Composant {
+        {abstract} + appendContent()
+        {abstract} + getContentComposant()
+        {abstract} + getNameComposant()
+        {abstract} + getOwnerComposant()
+        {abstract} + getSizeComposant()
+        {abstract} + setOwnerComposant()
+
+
+    enum ComposantType implements Composant{
+      FICHIER
+      REPERTOIRE
+    }
+
+
+    interface Composite {
+        {abstract} + addChild()
+        {abstract} + removeChild()
+        {abstract} + getChildren()
+        {abstract} + removeChildren()
+    }
+
+    interface FSFactory {
+        {abstract} + createComposant()
+        {static} + getInstance()
+    }
+
+
+    class FSFactoryFichier implements ComposantImpl{
+        ~ name : String
+        + Fichier()
+    }
+
+    class FSFactoryRepertoire implements ComposantImpl{
+        ~ name : String
+        + Fichier()
+    }
+
+
+    class Owner {
+        - name : String
+        + Owner()
+    }
+
+   FSFactory o-- Composant
+   FSFactoryFichier *--> Composite
+   FSFactoryRepertoire *--> Composant
+   Owner  --> "~possède *" FSFactoryFichier
+   Owner  --> "~possède *" FSFactoryRepertoire
+   Composite *-> Composant
+
+
+right footer
+
+endfooter
+
+@enduml
