@@ -5,13 +5,11 @@ public interface Composant {
     void appendContent(String s);
 
     String getNameComposant();
+    Owner getOwnerComposant();
+    Owner setOwnerComposant(Owner o);
 
     String getContentComposant();
+    int getSizeComposant();
 
-    String getOwnerComposant();
-
-    String getSizeComposant();
-
-    String setOwnerComposant();
-
+    boolean isComposite();
 }

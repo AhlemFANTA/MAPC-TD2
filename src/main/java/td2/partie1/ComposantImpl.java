@@ -1,6 +1,19 @@
 package td2.partie1;
 
-public class ComposantImpl implements Composant {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class ComposantImpl implements Composant {
+    protected final String name;
+    protected Owner owner;
+    protected final List<String> content;
+
+
+    protected ComposantImpl(String name, Owner owner) {
+        this.name = name;
+        this.owner = new Owner("");;
+        this.content = new ArrayList<>();
+    }
 
     @Override
     public void appendContent(String s) {
@@ -9,27 +22,30 @@ public class ComposantImpl implements Composant {
 
     @Override
     public String getNameComposant() {
-        return null;
+        return this.name;
     }
 
     @Override
     public String getContentComposant() {
-        return null;
+
+        StringBuilder sb = new StringBuilder();
+        this.content.forEach(c -> sb.append(c).append(",\n"));
+        return sb.toString();
     }
 
     @Override
-    public String getOwnerComposant() {
-        return null;
+    public Owner getOwnerComposant() {
+        return this.owner;
     }
 
     @Override
-    public String getSizeComposant() {
-        return null;
+    public int getSizeComposant() {
+        return content.size();
     }
 
     @Override
-    public String setOwnerComposant() {
-        return null;
+    public Owner setOwnerComposant(Owner owner) {
+        return this.owner = owner;
     }
 
 }
