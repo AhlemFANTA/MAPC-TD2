@@ -1,0 +1,30 @@
+@startuml classdiagram
+!include ../style/commons.style
+
+title DP Composite
+
+package  td3.api{
+
+    package SystemForum {
+        interface IConteneur #LightGreen{}
+        interface IContenu #LightGreen{}
+        abstract class Conteneur #LightGreen implements IConteneur, IContenu{
+                #final children:List<T>
+                #sujet:String
+        }
+        class Forum extends Conteneur{}
+        class Theme extends Conteneur{}
+        class Salon extends Conteneur{}
+        class Message implements IContenu{}
+        interface Visitor #LightGreen extends AbstractVisitor{}
+
+
+}
+Conteneur*-->IContenu : estComposé
+
+
+right footer
+
+endfooter
+
+@enduml

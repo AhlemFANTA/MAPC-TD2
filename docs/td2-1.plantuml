@@ -49,7 +49,7 @@ package td2 {
     }
 
    FSFactory o-- Composant
-   FSFactoryFichier *--> Composite
+   FSFactoryFichier *--> Composite : estComposé
    FSFactoryRepertoire *--> Composant
    Owner  --> "~possède *" FSFactoryFichier
    Owner  --> "~possède *" FSFactoryRepertoire
